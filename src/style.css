@@ -1,5 +1,4 @@
 @import url('./cardUsers.css');
-@import url('./cardProduct.css');
 @import url('./cardPost.css');
 
 *{
@@ -122,4 +121,18 @@ footer ul li{
     gap: 24px;
     width: 80%;
     justify-content: center;
+}
+
+.btn-header{
+    border: 2px solid #2f2f2f;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #2f2f2f;
+    color: antiquewhite;
+    transition: ease all 300ms;
+}
+
+.btn-header:hover{
+    box-shadow: 4px 6px aqua ;
 }
