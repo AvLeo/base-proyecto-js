@@ -16,13 +16,13 @@
 
 		<nav>
 			<ul>
-				<li id="iniciar-sesion" class="btn-header ocultar">Iniciar Sesion</li>
-				<li id="registrarse" class="btn-header ocultar">Registrarse</li>
-				<li id="show-products" class="btn-header ">Productos</li>
-				<li id="show-posts" class="btn-header ">Posts</li>
-				<li id="show-recetas" class="btn-header ">Recetas</li>
-				<li id="show-users" class="btn-header ">Users</li>
-				<li id="cerrar-sesion" class="btn-header ">Cerrar Sesión</li>
+				<li id="iniciar-sesion" class="btn-header ">Iniciar Sesion</li>
+				<li id="registrarse" class="btn-header ">Registrarse</li>
+				<li id="show-products" class="btn-header ocultar ">Productos</li>
+				<li id="show-posts" class="btn-header ocultar ">Posts</li>
+				<li id="show-recetas" class="btn-header ocultar ">Recetas</li>
+				<li id="show-users" class="btn-header ocultar ">Users</li>
+				<li id="cerrar-sesion" class="btn-header ocultar ">Cerrar Sesión</li>
 			</ul>
 		</nav>
 	</header>
@@ -79,24 +79,27 @@
 		</section>
 
 		<!-- Iniciar Sesion -->
-		<section class="inicio ocultar">
+		<section class="inicio ">
 			<form id="">
 				<div>
 					<!-- Usuario -->
 					<label for="">Usuario</label>
-					<input type="text">
+					<input id="login-user" type="text">
 
 					<!-- Contraseña -->
 					<label for="">Contraseña</label>
-					<input type="password">
+					<input id="login-password" type="password">
 				</div>
 				<!-- Boton Inicio Sesion -->
-				<button>Ingresar</button>
+				<button id="btn-login">Ingresar</button>
 			</form>
 		</section>
 
 		<!-- Ya iniciado -->
-		<section class="r-s">
+		<section class="r-s ocultar">
+			<section id="sect-home" class="ocultar">
+				
+			</section>
 			<!-- CARD CONTAINER -->
 			<!-- USERS -->
 			<section id="users" class="card-container ocultar">
