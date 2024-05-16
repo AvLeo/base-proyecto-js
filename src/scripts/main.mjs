@@ -2,6 +2,7 @@ import { getAllUsers } from "./users/getUsers.mjs";
 import { addUser } from "./users/addUser.mjs";
 import { getAllPost } from "./posts/getAllPost.mjs";
 import { logInUser } from "./users/logIn.mjs";
+import { getAllProducts } from "./productos/getAllProducts.mjs";
 
 window.onload = () => {
     getAllUsers();
@@ -40,12 +41,42 @@ const $btnUser = $('#show-users')
 const $btnCerrarSesion = $('#cerrar-sesion')
 
 // Manje nuestro estado de LOGIN.
-let logInState = {
-    firstName : "",
-    lastName : "",
-    username:"",
-    email:"",
-    image:""
+
+if(!localStorage.getItem('stateLogin')){
+    localStorage.setItem('stateLogin', JSON.stringify({
+            state: false,
+            user:{
+                firstName : "",
+                lastName : "",
+                username:"",
+                email:"",
+                image:"",
+                cart: []
+            }
+    }))
+}else{
+    console.log("Ya está creado el stateLogin");
+}
+
+
+
+export let logInState = JSON.parse(localStorage.getItem('stateLogin'))
+
+if(logInState.state){
+    $btnFormInicio.classList.add('ocultar')
+        $home.classList.remove('ocultar')
+        $btnReceta.classList.remove('ocultar')
+        $btnProducto.classList.remove('ocultar')
+        $btnUser.classList.remove('ocultar')
+        $btnCerrarSesion.classList.remove('ocultar')
+        $btnRegistrarse.classList.add('ocultar')
+        $btnIniciar.classList.add('ocultar')
+        $sectionHome.classList.remove('ocultar')
+
+        $sectionHome.innerHTML = `
+        <img src=${logInState.user.image} alt="">
+		<h1>Bienvenido <span id="home-name-user">${logInState.user.firstName}</span></h1>
+        `
 }
 
 // ____________EVENTOS__________________
@@ -106,8 +137,8 @@ $btnLogIn.addEventListener('click', (e) => {
         $sectionHome.classList.remove('ocultar')
 
         $sectionHome.innerHTML = `
-        <img src=${logInState.image} alt="">
-		<h1>Bienvenido <span id="home-name-user">${logInState.firstName}</span></h1>
+        <img src=${logInState.user.image} alt="">
+		<h1>Bienvenido <span id="home-name-user">${logInState.user.firstName}</span></h1>
         `
 
         $logInPassword.value = ""
@@ -135,14 +166,23 @@ $btnCerrarSesion.addEventListener('click', () => {
         console.log(logInState);
 })
 
+// ______________ Evento Productos ________________________
+$btnProducto.addEventListener('click', () => {
+    getAllProducts()
+    
+})
+
+
 
 // _____________ FUNCION PARA GUARDAR DATOS DE USUARIO QUE INICIO SESION _________
-export const handleLogInState = (firstName = "", lastName = "", username = "", email = "", image = "") => {
-
-    logInState.firstName = firstName
-    logInState.lastName = lastName
-    logInState.username = username
-    logInState.email = email
-    logInState.image = image
-
+export const handleLogInState = (firstName = "", lastName = "", username = "", email = "", image = "", state = false) => {
+    logInState.state = state
+    logInState.user.firstName = firstName
+    logInState.user.lastName = lastName
+    logInState.user.username = username
+    logInState.user.email = email
+    logInState.user.image = image
+    localStorage.setItem('stateLogin', JSON.stringify(logInState))
 }
+
+

@@ -9,7 +9,7 @@ export const logInUser = (currentUser, currentPassword) => {
     if(!usuario) return alert('No se encontró el usuario pasado')
 
     if(usuario.password === currentPassword){
-        handleLogInState(firstName,lastName,username,email,image)
+        handleLogInState(firstName,lastName,username,email,image, true)
         return true
     }
 
